@@ -1,6 +1,10 @@
 #!/bin/bash
 echo -e "Processo iniciado.\n"
 
+#Download dos arquivos
+
+#wget 
+
 cd <diretório A>
 
 ###Descompactar arquivos zip###
