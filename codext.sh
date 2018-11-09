@@ -35,7 +35,7 @@ rename 's/a+//' *.csv #Renomear multiplos arquivos
 echo "Convertendo codificação dos arquivos para UTF-8."
 
 for x in $(ls *.csv)
-do iconv -f ISO-8859-16 -t UTF-8 $x > _$x
+do iconv -f ISO-8859-1 -t UTF-8 $x > _$x
 done
 
 rm -v p #Remover arquivos desnecessários
