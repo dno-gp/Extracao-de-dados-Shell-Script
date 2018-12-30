@@ -27,7 +27,7 @@ do for x in $(cat munics.txt)
    done
 done
 
-grep -iw 'pb' auxiliar.txt > beneficiados.csv
+grep -iw 'pb' auxiliar.txt > sd-beneficiados.csv
 
 echo -e Removendo arquivos desnescessários...
 rm -vr arq.txt
