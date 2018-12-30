@@ -49,7 +49,7 @@ echo "Ajustando colunas dos arquivos"
 for x in $(ls /<diretorio>/*.csv)
 do  for i in $(cat arquivo.txt)
     do grep -iw "$i" $x > arq.csv
-    cut -d ";" -f1,2,3,4,5,8,9,10,11,12,13,14,15,16,17,18,19 arq.csv >> "$i".csv
+    cut -d ";" -f1-5,8-19 arq.csv >> "$i".csv
 
     done
 done
