@@ -1,35 +1,37 @@
 #!/bin/bash
 
-#baixar arquivos
+echo -e Processo de extração de dados iniciado...
+echo -e Beneficiários seguro defeso-pescador artesanal
 
+#baixar arquivos
+echo -e Executando downloads...
 for x in $(cat periodo.txt)
 do wget -c --show-progress  http://www.portaltransparencia.gov.br/download-de-dados/seguro-defeso/${x}.zip
 done
 
-
 #desconpactar arquivos
+echo -e Descompactando arquivos baixados...
 for i in $(ls *.zip)
 do unzip  $i
 done
 
-
 #filtrar arquivos
+echo -e Filtrando arquivos baixados...
 
-touch auxiliar.csv
+touch auxiliar.txt
 
 for i in $(ls *.csv)
 do for x in $(cat munics.txt)
-   do grep -wi "$x" $i > arq.csv
-   cat arq.csv >> auxiliar.csv
+   do grep -iw "$x" $i > arq.txt
+      cat arq.txt >> auxiliar.txt
    done
 done
 
-grep -w "PB" auxiliar.csv > beneficiaos.csv
+grep -iw 'pb' auxiliar.txt > beneficiados.csv
 
-echo -e Removendo arquivos...
-rm -v auxiliar.csv
-rm -v arq.csv
-rm -v 201*
-
+echo -e Removendo arquivos desnescessários...
+rm -vr arq.txt
+rm -vr 201*
+rm -vr auxiliar.txt
 
 echo -e Processo finalizado.
