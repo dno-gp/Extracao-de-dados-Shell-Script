@@ -1,22 +1,26 @@
 #!/bin/bash
 
+###############
+#SEGURO DEFESO#
+###############
+
 echo -e Processo de extração de dados iniciado...
-echo -e Beneficiários seguro defeso-pescador artesanal
+echo -e "Beneficiários seguro defeso (pescador artesanal)"
 
 #baixar arquivos
-echo -e Executando downloads...
+echo -e "\nExecutando downloads..."
 for x in $(cat periodo.txt)
 do wget -c --show-progress  http://www.portaltransparencia.gov.br/download-de-dados/seguro-defeso/${x}.zip
 done
 
 #desconpactar arquivos
-echo -e Descompactando arquivos baixados...
+echo -e "\nDescompactando arquivos baixados..."
 for i in $(ls *.zip)
 do unzip  $i
 done
 
 #filtrar arquivos
-echo -e Filtrando arquivos baixados...
+echo -e "\nFiltrando arquivos baixados..."
 
 touch auxiliar.txt
 
@@ -27,11 +31,11 @@ do for x in $(cat munics.txt)
    done
 done
 
-grep -iw 'pb' auxiliar.txt > sd-beneficiados.csv
+grep -iw 'pb' auxiliar.txt > beneficiados.csv
 
-echo -e Removendo arquivos desnescessários...
+echo -e "\nRemovendo arquivos desnescessários..."
 rm -vr arq.txt
 rm -vr 201*
 rm -vr auxiliar.txt
 
-echo -e Processo finalizado.
+echo -e "Processo finalizado!"
