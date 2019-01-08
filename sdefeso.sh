@@ -3,9 +3,9 @@
 ###############
 #SEGURO DEFESO#
 ###############
-
-echo -e Processo de extração de dados iniciado...
+figlet Seguro Defeso
 echo -e "Beneficiários seguro defeso (pescador artesanal)"
+echo -e Processo de extração de dados iniciado...
 
 #baixar arquivos
 echo -e "\nExecutando downloads..."
@@ -18,9 +18,10 @@ echo -e "\nDescompactando arquivos baixados..."
 for i in $(ls *.zip)
 do unzip  $i
 done
+echo "Arquivos descompactados."
 
 #filtrar arquivos
-echo -e "\nFiltrando arquivos baixados..."
+echo -e "\nFiltrando dados dos arquivos baixados..."
 
 touch auxiliar.txt
 
@@ -31,7 +32,7 @@ do for x in $(cat munics.txt)
    done
 done
 
-grep -iw 'pb' auxiliar.txt > beneficiados.csv
+grep -iw 'pb' auxiliar.txt > beneficiados2018.csv
 
 echo -e "\nRemovendo arquivos desnescessários..."
 rm -vr arq.txt
