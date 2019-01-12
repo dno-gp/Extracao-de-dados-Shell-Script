@@ -3,7 +3,13 @@
 ###############
 #SEGURO DEFESO#
 ###############
-figlet Seguro Defeso
+
+if [ -e /usr/bin/figlet ]; then
+
+  figlet Seguro Defeso
+
+fi
+
 echo -e "Beneficiários seguro defeso (pescador artesanal)"
 echo -e Processo de extração de dados iniciado...
 
@@ -20,10 +26,10 @@ do unzip  $i
 done
 echo "Arquivos descompactados."
 
+touch auxiliar.txt ; echo -e "\nArquivo auxiliar.txt criado."
+
 #filtrar arquivos
 echo -e "\nFiltrando dados dos arquivos baixados..."
-
-touch auxiliar.txt
 
 for i in $(ls *.csv)
 do for x in $(cat munics.txt)

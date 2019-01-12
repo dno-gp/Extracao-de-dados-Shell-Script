@@ -3,8 +3,14 @@
 ########################
 #PROGRAMA BOLSA FAMÍLIA#
 ########################
-figlet Programa
-figlet Bolsa Familia
+
+if [ -e /usr/bin/figlet ]; then
+
+   figlet Programa
+   figlet Bolsa Familia
+
+fi
+
 echo "Beneficiários do Prgrama Bolsa Família."
 echo "Processo de extração de dados iniciado..."
 
