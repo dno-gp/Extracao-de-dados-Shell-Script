@@ -1,8 +1,8 @@
 #!/bin/bash
 
-########################
-#PROGRAMA BOLSA FAMÍLIA#
-########################
+##########################
+# PROGRAMA BOLSA FAMÍLIA #
+##########################
 
 if [ -e /usr/bin/figlet ]; then
 
@@ -13,6 +13,10 @@ fi
 
 echo "Beneficiários do Prgrama Bolsa Família."
 echo "Processo de extração de dados iniciado..."
+
+if [ -e ./auxiliar.txt ]; then
+  rm auxiliar.txt
+fi
 
 #baixar arquivos
 for x in $(cat periodo.txt)
@@ -36,14 +40,30 @@ rm -vr *.csv
 rm -vr arq.txt
 done
 
+#O trecho de código abaixo necessita ser melhorado.
 
 echo -e "\nCriando arquivo com os resultados..."
-grep -iw "pb" auxiliar.txt > beneficiarios2018.txt
+
+grep -iw "pb" auxiliar.txt > beneficiarios.txt
+
+sed -i 's/,/./g' beneficiarios.txt
+sed -i 's/.$//g' beneficiarios.txt
+sed -i 's/CRUZ DO ESPIRITO SANTO//g' beneficiarios.txt
+sed -i 's/JURUPIRNGA/2/g' beneficiarios.txt
+sed -i 's/MARI/3/g' beneficiarios.txt
+sed -i 's/3A/MARIA/g' beneficiarios.txt
+sed -i 's/PILAR/4/g' beneficiarios.txt
+sed -i 's/RIACHAO DO POCO/5/g' beneficiarios.txt
+sed -i 's/SAO JOSE DOS RAMOS/6/g' beneficiarios.txt
+sed -i 's/SAO MIGUEL DE TAIPU/7/g' beneficiarios.txt
+sed -i 's/SAPE/8/g' beneficiarios.txt
+sed -i 's/SOBRADO/9/g' beneficiarios.txt
+
 echo "Arquivo com resultados criado."
 
 echo -e "\nMovendo aquivos .zip..."
 mv *.zip ./compactados/
-mv beneficiarios2018.txt ./resultados/
+mv beneficiarios.txt ./resultados/
 echo -e "\nArquivos movidos."
 
 echo -e "\nRemovendo auxiliar.txt..."
