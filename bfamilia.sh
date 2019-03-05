@@ -14,20 +14,22 @@ fi
 echo "Beneficiários do Prgrama Bolsa Família."
 echo "Processo de extração de dados iniciado..."
 
-if [ -e ./auxiliar.txt ]; then
-  rm auxiliar.txt
-fi
+touch auxiliar.txt
 
 #baixar arquivos
 for x in $(cat periodo.txt)
 do echo -e "\nExecutando download..."
-   wget -c --show-progress  http://www.portaltransparencia.gov.br/download-de-dados/bolsa-familia-pagamentos/${x}.zip
+
+   if [ -e ./$x.zip ]; then
+
+   echo O arquivo $x.zip já existe.
+
+   else
+   wget --show-progress  http://www.portaltransparencia.gov.br/download-de-dados/bolsa-familia-pagamentos/${x}.zip
 
    echo -e "\nDescompactando arquivo..."
    unzip $x.zip
    echo "Arquivo descompactado."
-
-   touch auxiliar.txt
 
    echo -e "\nFiltrando dados do  arquivo..."
    for i in $(cat munics.txt)
@@ -35,9 +37,12 @@ do echo -e "\nExecutando download..."
       cat arq.txt >> auxiliar.txt
    done
 
-echo -e "\nRemovendo arquivos desnecessários..."
-rm -vr *.csv
-rm -vr arq.txt
+  echo -e "\nRemovendo arquivos desnecessários..."
+  rm -vr *.csv
+  rm -vr arq.txt
+
+  fi
+
 done
 
 #O trecho de código abaixo necessita ser melhorado.
