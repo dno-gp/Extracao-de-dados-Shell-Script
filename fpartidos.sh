@@ -7,13 +7,16 @@ echo -e "Processo iniciado.\n"
 
 #Download dos arquivos no site do tse
 
-for x in $(cat lspartidos.txt) #Substituir o aquivo txt por uma array/lista
+for x in $(cat partidos.txt) #Substituir o aquivo txt por uma array/lista
 do wget http://agencia.tse.jus.br/estatistica/sead/eleitorado/filiados/uf/filiados_${x}_pb.zip
 done
 
 
+mkdir zipados
 
-cd <diretório A>
+mv *.zip zipados/
+
+cd zipados/
 
 ###Descompactar arquivos zip###
 echo "Descompactando arquivos..."
