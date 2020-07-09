@@ -14,7 +14,7 @@ class Bots1():
         driver = self.driver
         driver.get("https://www.instagram.com/?hl=pt-br")
         time.sleep(1)
-                    #/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[2]/div/label/input
+        
         elem_user = driver.find_element_by_xpath("/html/body/div[1]/section/main/article/div[2]\
                                                   /div[1]/div/form/div[2]/div/label/input").send_keys(f"{self.login}")
         time.sleep(2)
