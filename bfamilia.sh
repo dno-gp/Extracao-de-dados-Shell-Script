@@ -3,6 +3,22 @@
 ##########################
 # PROGRAMA BOLSA FAMÍLIA #
 ##########################
+#
+# bfamilia.sh - Extrai dados do Portal da Transparência do Governo Federal de beneficiários do Programa Bolsa Família.
+#
+# Autor  :Edson Sales <sales_eds@hotmail.com>
+#
+#-----------------------------------------------------------------------------------------
+# Este programa realiza o download da relação de beneficiários do Programa Bolsa Família,
+# disponível no Portal da Tranparência do Governo Federal <http://www.transparencia.gov.br/>.
+# O programa descompacta o arquivo baixado, faz ajustes de formatação, filtra os dados conforme 
+# municípios selecionados e outros critérios e, por fim, gera um arquivo com as modificações estabelecidas.
+# Para o funcionamento, o programa necessita do link dos dados e relação de municpios de interesse.
+#-----------------------------------------------------------------------------------------
+#
+# Licença: GPL
+#
+##################################################################################CÓDIGO:
 
 if [ -e /usr/bin/figlet ]; then
 
@@ -75,3 +91,5 @@ echo -e "\nRemovendo auxiliar.txt..."
 rm -vr auxiliar.txt
 
 echo -e "\nProcesso finalizado!"
+
+##################################################################################FIM.
